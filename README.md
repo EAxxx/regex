@@ -1,18 +1,43 @@
-# Um pequeno somador
+# Detectando logins e e-mails válidos
 
-Esta é uma tarefa-template, que deve ser modificada para ser convertida em
-outras atividades. Aqui, fica o enunciado da tarefa, ou seja, sua descrição, com
-instruções claras sobre o problema que deve ser resolvido. Esta tarefa consiste
-em fazer um somador. Ele deverá receber uma linha de texto contendo dois números
-inteiros. Essa linha se encerra com caractere fim de linha `\n`. O programa
-deverá imprimir na saída padrão a soma desses dois números
+Um problema que existe em sistemas web é que os dados fornecidos pelo usuário
+final nem sempre são válidos. Alguém poderia criar uma conta em um serviço web
+usando um e-mail fantasma, por exemplo. Outro problema é que determinados logins
+poderiam gerar problemas em etapas posteriores do banco de dados, por exemplo
+devido à compatibilidade de sistemas antigos com acentos ou caracteres
+especiais.
+
+O programa receberá como entrada duas palavras: um login e um e-mail. Ele deve
+escrever na tela: ACEITAR, caso ambos sejam válidos, ou REJEITAR, caso um ou
+ambos (login e e-mail) sejam inválidos.
+
+## Regras para logins válidos
+* O login pode conter apenas letras e números
+* Não pode começar com um número
+* Não pode ter caracteres especiais, espaços, acentos,
+  pontuação, etc.
+* O nome de usuário deve ter pelo menos 5 caracteres, mas não mais que 10
+
+## Regras para e-mails válidos
+* Um endereço de e-mail sempre tem a forma `usuario@dominio`
+* O nome de usuário deve começar com um caractere ascii, mas pode conter números
+  mais adiante
+* O nome de usuário pode ter palavras separadas por `.`, `-` ou `_`, mas não pode terminar
+  em `.`, isto é, `teste.um@dominio.com` é um e-mail válido, mas
+  `testeum.@dominio.com` não é.
+* Nesta validação, não é permitido usar caracteres `+` para fazer tags em
+  e-mails
+* Todos os e-mails válidos fazem parte do domínio principal `@unicamp.br` ou de
+  um subdomínio, por exemplo, `@dca.fee.unicamp.br`.
+
 
 ## Exemplos
 
 Entrada | Saida
 ------- | -----
-`1 2` | `3`
-`100 1` | `101`
+`m email@unicamp.br` | `REJEITAR`
+`meulogin meulogin@unicamp.br` | `ACEITAR`
+`meulogin meulogin@gmail.com` | `REJEITAR`
 
 
 ## Instruções adicionais
